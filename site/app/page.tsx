@@ -1,68 +1,43 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowRight, ArrowDown } from "lucide-react"
+import { ArrowRight, Loader2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { personalInfo, projects } from "@/lib/data"
 import { ProjectCard } from "@/components/project-card"
+import styles from "./homepage.module.scss"
+import { useRef, useState, useEffect } from "react"
+
 
 export default function HomePage() {
   const featuredProjects = projects.filter((p) => p.featured).slice(0, 4)
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
-
+    <div className="min-h-screen">
+      {/* Background Video */}
+        <video 
+            src={"https://d395js6c4h8h6h.cloudfront.net/Videos/DelMarNikes.mp4"} 
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+            preload="auto"
+            className={styles.backgroundVideo} 
+          />
       {/* Hero Section */}
-      <section className="min-h-screen flex flex-col justify-center pt-16">
-        <div className="max-w-6xl mx-auto px-6 py-20">
-          <div className="max-w-3xl">
-            <p className="text-sm text-muted-foreground mb-4 tracking-wide">
-              Good to see you here
-            </p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium leading-tight tracking-tight text-balance mb-6">
-              I&apos;m a creative marketing strategist who brings brands to life
-              through{" "}
-              <span className="text-muted-foreground">
-                storytelling, visual design, and strategic thinking.
-              </span>
-            </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mb-10">
-              {personalInfo.tagline}. I help brands connect authentically with
-              their audiences through photography, video, graphic design, and
-              integrated campaigns.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" className="group">
-                <Link href="/about">
-                  Learn About Me
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="lg">
-                <Link href="/portfolio">View Portfolio</Link>
-              </Button>
-            </div>
+      <section className="min-h-screen flex flex-col justify-center items-center pt-16">
+          <div className={styles.title}>
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-medium">Tommy Nguyen</h1>
           </div>
-
-          {/* Scroll indicator */}
-          <div className="mt-20 flex items-center gap-2 text-sm text-muted-foreground">
-            <ArrowDown className="h-4 w-4 animate-bounce" />
-            <span>Scroll to see featured work</span>
-          </div>
-        </div>
       </section>
 
       {/* Featured Work Section */}
-      <section className="py-24 border-t border-border">
+      <section className="relative py-24 z-10">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex items-center justify-between mb-12">
             <div>
-              <p className="text-sm text-muted-foreground mb-2">
-                Selected work
-              </p>
               <h2 className="text-2xl sm:text-3xl font-medium tracking-tight">
                 Featured Projects
               </h2>
@@ -84,12 +59,12 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 border-t border-border bg-secondary/30">
+      <section className="relative z-10 py-24 bg-secondary/30">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h2 className="text-2xl sm:text-3xl font-medium tracking-tight mb-4">
             Interested in working together?
           </h2>
-          <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
+          <p className="text-white mb-8 max-w-lg mx-auto">
             I&apos;m always open to discussing new projects, creative ideas, or
             opportunities to be part of your vision.
           </p>
@@ -99,7 +74,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Footer />
     </div>
   )
+
+
 }

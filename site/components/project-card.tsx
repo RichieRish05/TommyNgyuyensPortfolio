@@ -6,6 +6,8 @@ import { ArrowUpRight, Play, Camera, Palette, Megaphone } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 import type { Project } from "@/lib/data"
+import styles from "./project-card.module.scss"
+import clsx from "clsx"
 
 import headshot from "@/assets/Tommy Nguyen.webp"
 
@@ -36,7 +38,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
   return (
     <div
       className={cn(
-        "group relative bg-card border border-border rounded-lg overflow-hidden transition-all duration-300 hover:border-foreground/20 hover:shadow-lg",
+        "group relative border-white border-border rounded-lg overflow-hidden transition-all duration-300 hover:border-foreground/20 hover:shadow-lg",
         className
       )}
     >
@@ -57,7 +59,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
               <Badge
                 key={tag}
                 variant="secondary"
-                className="bg-background/90 text-foreground text-xs"
+                className={styles.tag}
               >
                 {tag}
               </Badge>
@@ -67,36 +69,31 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
 
         {/* Category Badge */}
         <div className="absolute top-4 left-4">
-          <Badge variant="secondary" className="bg-background/90 text-foreground gap-1.5">
+          <Badge variant="secondary" className={styles.tag}>
             <Icon className="h-3 w-3" />
             {categoryLabels[project.category]}
           </Badge>
         </div>
 
         {/* Arrow */}
-        <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-background/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-          <ArrowUpRight className="h-4 w-4" />
+        <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+          <ArrowUpRight className="h-4 w-4 text-black" />
         </div>
       </div>
 
       {/* Content */}
-      <div className="p-6">
+      <div className={styles.content}>
         <div className="flex items-start justify-between gap-4 mb-2">
           <h3 className="font-medium text-lg leading-tight group-hover:text-foreground transition-colors">
             {project.title}
           </h3>
-          <span className="text-sm text-muted-foreground shrink-0">
+          <span className="text-sm shrink-0">
             {project.year}
           </span>
         </div>
-        <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">
+        <p className="text-sm line-clamp-2 leading-relaxed">
           {project.description}
         </p>
-        {project.client && (
-          <p className="text-xs text-muted-foreground mt-3 pt-3 border-t border-border">
-            Client: {project.client}
-          </p>
-        )}
       </div>
     </div>
   )
