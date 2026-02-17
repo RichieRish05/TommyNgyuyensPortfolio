@@ -7,7 +7,10 @@ import { Menu, X, Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { personalInfo, navLinks } from "@/lib/data"
+import { navLinks } from "@/lib/data"
+import clsx from "clsx"
+
+import styles from "./navigation.module.scss"
 
 export function Navigation() {
   const pathname = usePathname()
@@ -20,14 +23,14 @@ export function Navigation() {
   }, [])
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <header className={styles.fullScreenContainer}>
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo / Name */}
         <Link
           href="/"
           className="text-lg font-medium tracking-tight hover:opacity-70 transition-opacity"
         >
-          {personalInfo.name}
+          Tommy Nguyen
         </Link>
 
         {/* Desktop Navigation */}
@@ -37,52 +40,19 @@ export function Navigation() {
               key={link.href}
               href={link.href}
               className={cn(
-                "text-sm transition-colors hover:text-foreground",
+                "text-sm transition-colors hover:opacity-70 transition-opacity",
                 pathname === link.href
-                  ? "text-foreground font-medium"
-                  : "text-muted-foreground"
+                  ? "text-white font-medium"
+                  : "text-white"
               )}
             >
               {link.name}
             </Link>
           ))}
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="ml-2"
-            aria-label="Toggle theme"
-          >
-            {mounted && (
-              <>
-                {theme === "dark" ? (
-                  <Sun className="h-4 w-4" />
-                ) : (
-                  <Moon className="h-4 w-4" />
-                )}
-              </>
-            )}
-          </Button>
         </div>
 
         {/* Mobile Menu Button */}
         <div className="flex items-center gap-2 md:hidden">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            aria-label="Toggle theme"
-          >
-            {mounted && (
-              <>
-                {theme === "dark" ? (
-                  <Sun className="h-4 w-4" />
-                ) : (
-                  <Moon className="h-4 w-4" />
-                )}
-              </>
-            )}
-          </Button>
           <Button
             variant="ghost"
             size="icon"

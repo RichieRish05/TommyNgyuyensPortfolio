@@ -16,6 +16,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen">
+      <Navigation />
       {/* Background Video */}
         <video 
             src={"https://d395js6c4h8h6h.cloudfront.net/Videos/DelMarNikes.mp4"} 
@@ -28,13 +29,18 @@ export default function HomePage() {
           />
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col justify-center items-center pt-16">
-          <div className={styles.title}>
+          <div 
+            className={styles.title}
+            onClick={() => {
+              document.getElementById("featured-work")?.scrollIntoView({ behavior: "smooth" })
+            }}
+          >
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-medium">Tommy Nguyen</h1>
           </div>
       </section>
 
       {/* Featured Work Section */}
-      <section className="relative py-24 z-10">
+      <section id="featured-work" className="relative py-24 z-10">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex items-center justify-between mb-12">
             <div>
