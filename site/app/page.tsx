@@ -9,13 +9,14 @@ import { personalInfo, projects } from "@/lib/data"
 import { ProjectCard } from "@/components/project-card"
 import styles from "./homepage.module.scss"
 import { useRef, useState, useEffect } from "react"
+import clsx from "clsx"
 
 
 export default function HomePage() {
   const featuredProjects = projects.filter((p) => p.featured).slice(0, 4)
 
   return (
-    <div className="min-h-screen">
+    <div className={styles.container}>
       <Navigation />
       {/* Background Video */}
         <video 
@@ -64,21 +65,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="relative z-10 py-24 bg-secondary/30">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <h2 className="text-2xl sm:text-3xl font-medium tracking-tight mb-4">
-            Interested in working together?
-          </h2>
-          <p className="text-white mb-8 max-w-lg mx-auto">
-            I&apos;m always open to discussing new projects, creative ideas, or
-            opportunities to be part of your vision.
-          </p>
-          <Button asChild size="lg">
-            <Link href="/contact">Get in Touch</Link>
-          </Button>
-        </div>
-      </section>
+
+      <Footer />
 
     </div>
   )

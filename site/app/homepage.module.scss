@@ -1,5 +1,11 @@
 $zoom-animation-time: 0.15s;
 
+
+.container {
+    font-family: 'Playfair Display', serif;
+    height: 100vh;
+}
+
 .title {
     position: relative;
     font-size: 100px;
@@ -50,4 +56,13 @@ $zoom-animation-time: 0.15s;
     min-height: 100%;
     object-fit: cover;
     z-index: 0;
+}
+
+.footer {
+    position: relative;
+    z-index: 50;
+    background: linear-gradient(to bottom, rgba(56, 56, 56,0.2), rgba(56, 56, 56,0.8));
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 2rem;
 }

@@ -1,13 +1,13 @@
 export const personalInfo = {
-  name: "Alex Morgan",
+  name: "Tommy Nguyen",
   title: "Creative Marketing Strategist",
   tagline: "Crafting stories that move people and brands forward",
-  email: "alex@example.com",
-  phone: "+1 (555) 123-4567",
-  linkedin: "https://linkedin.com/in/alexmorgan",
+  email: "tommytnguyen7@gmail.com",
+  phone: "+1 (714) 782-2329",
+  linkedin: "https://www.linkedin.com/in/tommythenguyen",
   location: "Los Angeles, CA",
   resumeUrl: "/resume.pdf",
-  avatar: "/headshot.jpg",
+  avatar: "/headshot.jpg.png",
 }
 
 export const aboutMe = {

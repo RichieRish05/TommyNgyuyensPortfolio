@@ -14,7 +14,6 @@ import styles from "./navigation.module.scss"
 
 export function Navigation() {
   const pathname = usePathname()
-  const { theme, setTheme } = useTheme()
   const [isOpen, setIsOpen] = React.useState(false)
   const [mounted, setMounted] = React.useState(false)
 
@@ -28,7 +27,7 @@ export function Navigation() {
         {/* Logo / Name */}
         <Link
           href="/"
-          className="text-lg font-medium tracking-tight hover:opacity-70 transition-opacity"
+          className={clsx(styles.linkText, "text-xl font-medium")}
         >
           Tommy Nguyen
         </Link>
@@ -39,12 +38,7 @@ export function Navigation() {
             <Link
               key={link.href}
               href={link.href}
-              className={cn(
-                "text-sm transition-colors hover:opacity-70 transition-opacity",
-                pathname === link.href
-                  ? "text-white font-medium"
-                  : "text-white"
-              )}
+              className={clsx(styles.linkText, "text-xl")}
             >
               {link.name}
             </Link>
@@ -66,20 +60,18 @@ export function Navigation() {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden border-t border-border bg-background">
+        <div className={styles.mobileContainer}>
           <div className="px-6 py-4 space-y-3">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className={cn(
-                  "block py-2 text-sm transition-colors hover:text-foreground",
-                  pathname === link.href
-                    ? "text-foreground font-medium"
-                    : "text-muted-foreground"
+                className={clsx(
+                  "block py-2 text-sm",
+                  styles.linkText
                 )}
-              >
+              > 
                 {link.name}
               </Link>
             ))}
