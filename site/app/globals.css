@@ -123,3 +123,29 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+.linkText {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Playfair Display', serif;
+    transition: color 0.3s ease;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover {
+        color: #FFC000;
+    }
+}
+
+.transluscentBackground {
+  background: radial-gradient(
+      ellipse 120% 120% at 50% 0%,
+      rgba(12, 10, 14, 0.95) 0%,
+      rgba(22, 20, 26, 0.7) 45%,
+      rgba(28, 26, 32, 0.5) 75%,
+      rgba(18, 16, 20, 0.4) 100%
+    );
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(12px);
+}

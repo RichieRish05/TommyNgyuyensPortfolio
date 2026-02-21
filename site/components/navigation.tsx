@@ -22,9 +22,8 @@ export function Navigation() {
   }, [])
 
   return (
-    <header className={styles.fullScreenContainer}>
+    <header className={clsx(styles.fullScreenContainer, "transluscentBackground")}>
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        {/* Logo / Name */}
         <Link
           href="/"
           className={clsx(styles.linkText, "text-xl font-medium")}

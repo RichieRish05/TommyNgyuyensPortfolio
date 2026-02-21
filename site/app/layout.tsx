@@ -8,36 +8,10 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Alex Morgan | Creative Marketing Strategist",
+  title: "Tommy Nguyen | Creative Marketing Strategist",
   description:
-    "Portfolio of Alex Morgan - Creative Marketing Strategist specializing in brand storytelling, photography, video production, and integrated campaigns.",
-  generator: "v0.app",
-  keywords: [
-    "marketing",
-    "portfolio",
-    "creative",
-    "photography",
-    "video",
-    "branding",
-  ],
-  authors: [{ name: "Alex Morgan" }],
-  icons: {
-    icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: "/apple-icon.png",
-  },
+    "Portfolio of Tommy Nguyen",
+  authors: [{ name: "Rishi Murumkar" }],
 }
 
 export const viewport: Viewport = {

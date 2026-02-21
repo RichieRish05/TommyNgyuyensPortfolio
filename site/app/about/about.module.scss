@@ -1,0 +1,48 @@
+.aboutContainer {
+  font-family: 'Playfair Display', serif;
+  min-height: 100vh;
+  position: relative;
+}
+
+.backgroundWrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.backgroundImage {
+  object-fit: cover;
+}
+
+.headshotWrapper {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: var(--muted);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.headshot {
+  object-fit: cover;
+  object-position: center top;
+}
+
+.heroWrapper {
+    padding: 4rem;
+    font-family: 'Playfair Display', serif;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(136, 134, 134, 0.5);
+    z-index: 50;
+    background: radial-gradient(
+      ellipse at 50% 50%,
+      rgba(8, 6, 10, 0.98) 0%,
+      rgba(15, 12, 18, 0.92) 35%,
+      rgba(20, 18, 24, 0.78) 65%,
+      rgba(12, 10, 14, 0.55) 100%
+    );
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(12px);
+}
+

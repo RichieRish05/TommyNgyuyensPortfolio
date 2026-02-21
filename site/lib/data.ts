@@ -37,10 +37,6 @@ export const skills = [
     category: "Analytics & Platforms",
     items: ["Google Analytics", "Meta Business Suite", "Hootsuite", "Mailchimp", "HubSpot", "Sprout Social"],
   },
-  {
-    category: "testing",
-    items: ["hey"]
-  }
 ]
 
 export type ExperienceField = "marketing" | "design" | "media" | "all"

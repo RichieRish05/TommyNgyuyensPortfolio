@@ -6,46 +6,49 @@ import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { personalInfo, aboutMe, skills } from "@/lib/data"
 
+import backgroundImage from "@/assets/aboutBackgroundImage.jpg"
+
 import headshot from "@/assets/Tommy Nguyen.webp"
+import styles from "./about.module.scss"
+
 
 export const metadata = {
-  title: "About | Alex Morgan",
+  title: "About | Tommy Nguyen",
   description:
-    "Learn more about Alex Morgan - Creative Marketing Strategist with expertise in brand storytelling, photography, and video production.",
+    "Learn more about Tommy Nguyen",
 }
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className={styles.aboutContainer}>
+      <div className={styles.backgroundWrapper} aria-hidden="true">
+        <Image src={backgroundImage} alt="About Page Background Image" fill className={styles.backgroundImage} />
+      </div>
       <Navigation />
-
-      <main className="pt-24 pb-16">
+      <main className="relative z-10 pt-24 pb-16">
+        {/*
         {/* Hero Section */}
         <section className="max-w-6xl mx-auto px-6 py-12">
+          <div className={styles.heroWrapper}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Photo */}
-            <div className="relative aspect-[3/4] rounded-lg overflow-hidden bg-muted">
-              <Image
-                src={headshot}
-                alt={`${personalInfo.name} - Professional headshot`}
-                fill
-                className="object-cover"
-                priority
-              />
+            <div className={styles.headshotWrapper}>
+              <Image src={headshot} alt="Tommy Nguyen Headshot" fill className={styles.headshot} />
             </div>
 
+
             {/* Content */}
-            <div className="lg:sticky lg:top-24">
-              <p className="text-sm text-muted-foreground mb-3 tracking-wide uppercase">
+            <div className="lg:top-24">
+              <p className="text-sm mb-3 tracking-wide uppercase">
                 About
               </p>
               <h1 className="text-3xl sm:text-4xl font-medium tracking-tight mb-6">
                 {personalInfo.name}
               </h1>
-              <p className="text-lg text-muted-foreground mb-2">
+              <p className="text-lg mb-2">
                 {personalInfo.title}
               </p>
-              <p className="text-sm text-muted-foreground mb-8">
+              <p className="text-sm mb-8">
                 {personalInfo.location}
               </p>
 
@@ -73,54 +76,13 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
-        </section>
-
-        {/* Languages & Interests */}
-        <section className="max-w-6xl mx-auto px-6 py-16 border-t border-border">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* Languages */}
-            <div>
-              <div className="flex items-center gap-2 mb-6">
-                <Globe className="h-5 w-5 text-muted-foreground" />
-                <h2 className="text-xl font-medium">Languages</h2>
-              </div>
-              <ul className="space-y-3">
-                {aboutMe.languages.map((language) => (
-                  <li
-                    key={language}
-                    className="text-muted-foreground flex items-center gap-3"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-foreground" />
-                    {language}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Interests */}
-            <div>
-              <div className="flex items-center gap-2 mb-6">
-                <Heart className="h-5 w-5 text-muted-foreground" />
-                <h2 className="text-xl font-medium">Interests & Hobbies</h2>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {aboutMe.hobbies.map((hobby) => (
-                  <span
-                    key={hobby}
-                    className="px-4 py-2 rounded-full border border-border text-sm text-muted-foreground hover:border-foreground/30 hover:text-foreground transition-colors"
-                  >
-                    {hobby}
-                  </span>
-                ))}
-              </div>
-            </div>
           </div>
         </section>
 
+
         {/* Skills Section */}
         <section className="max-w-6xl mx-auto px-6 py-16 border-t border-border">
-          <div className="flex items-center gap-2 mb-10">
-            <Sparkles className="h-5 w-5 text-muted-foreground" />
+          <div className="flex items-center gap-2 mb-10 bg-black/50 backdrop-blur-sm rounded-lg p-8 sm:p-12 text-center">
             <h2 className="text-2xl font-medium">Skills & Expertise</h2>
           </div>
 
@@ -128,7 +90,7 @@ export default function AboutPage() {
             {skills.map((skillGroup) => (
               <div
                 key={skillGroup.category}
-                className="p-6 rounded-lg border border-border bg-card hover:border-foreground/20 transition-colors"
+                className="p-6 rounded-lg border border-border bg-card/80 backdrop-blur-sm hover:border-foreground/20 transition-colors"
               >
                 <h3 className="font-medium mb-4 text-lg">
                   {skillGroup.category}
@@ -148,24 +110,6 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="max-w-6xl mx-auto px-6 py-16 border-t border-border">
-          <div className="bg-secondary/50 rounded-lg p-8 sm:p-12 text-center">
-            <h2 className="text-2xl font-medium mb-4">
-              Want to see my work in action?
-            </h2>
-            <p className="text-muted-foreground mb-6 max-w-lg mx-auto">
-              Explore my portfolio to see how I&apos;ve helped brands tell their
-              stories through creative campaigns and visual content.
-            </p>
-            <Button asChild size="lg" className="group">
-              <Link href="/portfolio">
-                Explore Portfolio
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Button>
-          </div>
-        </section>
       </main>
 
       <Footer />
