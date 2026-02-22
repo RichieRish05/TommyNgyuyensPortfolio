@@ -22,9 +22,10 @@
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(12px);
     z-index: 50;
-    position: fixed;
+    position: absolute;
+    top: 100%;
+    left: 0;
     width: 100%;
-
 
     @media (min-width: 768px) {
         display: none;

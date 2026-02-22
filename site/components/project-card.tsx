@@ -38,19 +38,19 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
   return (
     <div
       className={cn(
-        "group relative border-white border-border rounded-lg overflow-hidden transition-all duration-300 hover:border-foreground/20 hover:shadow-lg",
+        "group relativ border-border rounded-lg overflow-hidden transition-all duration-300 hover:border-foreground/20 hover:shadow-lg",
         className
       )}
     >
       {/* Image Container */}
-      <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+      <div className="relative aspect-4/3 overflow-hidden bg-muted">
         <Image
           src={headshot}
           alt={project.title}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-linear-to-t from-background/80 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
         {/* Hover Overlay Content */}
         <div className="absolute inset-0 flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">

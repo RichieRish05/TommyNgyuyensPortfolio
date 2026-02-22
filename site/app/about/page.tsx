@@ -6,7 +6,7 @@ import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { personalInfo, aboutMe, skills } from "@/lib/data"
 
-import backgroundImage from "@/assets/aboutBackgroundImage.jpg"
+import backgroundImage from "@/assets/aboutBackground.jpg"
 
 import headshot from "@/assets/Tommy Nguyen.webp"
 import styles from "./about.module.scss"
@@ -26,7 +26,6 @@ export default function AboutPage() {
       </div>
       <Navigation />
       <main className="relative z-10 pt-24 pb-16">
-        {/*
         {/* Hero Section */}
         <section className="max-w-6xl mx-auto px-6 py-12">
           <div className={styles.heroWrapper}>
@@ -82,7 +81,7 @@ export default function AboutPage() {
 
         {/* Skills Section */}
         <section className="max-w-6xl mx-auto px-6 py-16 border-t border-border">
-          <div className="flex items-center gap-2 mb-10 bg-black/50 backdrop-blur-sm rounded-lg p-8 sm:p-12 text-center">
+          <div className="flex items-center gap-2 mb-10 radialBackground backdrop-blur-sm rounded-lg p-8 sm:p-12 text-center">
             <h2 className="text-2xl font-medium">Skills & Expertise</h2>
           </div>
 

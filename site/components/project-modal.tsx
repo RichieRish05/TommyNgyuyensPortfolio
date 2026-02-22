@@ -8,6 +8,9 @@ import { Button } from "@/components/ui/button"
 import type { Project } from "@/lib/data"
 import { cn } from "@/lib/utils"
 
+
+import backgroundImage from "@/assets/portfolioBackgroundImage.png"
+
 interface ProjectModalProps {
   project: Project | null
   onClose: () => void
@@ -90,7 +93,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           {/* Image Gallery */}
           <div className="relative aspect-video bg-muted">
             <Image
-              src={`https://picsum.photos/seed/${project.id}${currentImageIndex}/1200/675`}
+              src={backgroundImage}
               alt={`${project.title} - Image ${currentImageIndex + 1}`}
               fill
               className="object-cover"
