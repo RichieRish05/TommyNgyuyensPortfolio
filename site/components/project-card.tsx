@@ -82,7 +82,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
       </div>
 
       {/* Content */}
-      <div className={styles.content}>
+      <div className={clsx(styles.content, "radialBackground")}>
         <div className="flex items-start justify-between gap-4 mb-2">
           <h3 className="font-medium text-lg leading-tight group-hover:text-foreground transition-colors">
             {project.title}

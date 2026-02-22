@@ -26,7 +26,7 @@ export function Navigation() {
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link
           href="/"
-          className={clsx(styles.linkText, "text-xl font-medium")}
+          className="text-xl font-medium linkText"
         >
           Tommy Nguyen
         </Link>
@@ -37,7 +37,7 @@ export function Navigation() {
             <Link
               key={link.href}
               href={link.href}
-              className={clsx(styles.linkText, "text-xl")}
+              className="text-xl linkText"
             >
               {link.name}
             </Link>
@@ -66,10 +66,7 @@ export function Navigation() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className={clsx(
-                  "block py-2 text-sm",
-                  styles.linkText
-                )}
+                className="block py-2 text-sm linkText"
               > 
                 {link.name}
               </Link>

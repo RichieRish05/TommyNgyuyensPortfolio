@@ -49,7 +49,7 @@ export default function HomePage() {
                 Featured Projects
               </h2>
             </div>
-            <Button asChild variant="ghost" className="group">
+            <Button asChild variant="ghost" className="group text-md">
               <Link href="/portfolio">
                 View All
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

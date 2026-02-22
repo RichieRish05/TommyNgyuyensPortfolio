@@ -9,7 +9,7 @@ export function Footer() {
 
   return (
     <footer className={clsx(styles.footerContainer, "transluscentBackground")}>
-      <div className="max-w-6xl mx-auto px-6 py-12">
+      <div className="max-w-6xl mx-auto px-6 py-12 playfair">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
@@ -39,7 +39,7 @@ export function Footer() {
             <div className="flex flex-col gap-3">
               <a
                 href={`mailto:${personalInfo.email}`}
-                className={clsx(styles.linkText, "flex items-center gap-2 linkText")}
+                className="flex items-center gap-2 linkText"
               >
                 <Mail className="h-4 w-4" />
                 {personalInfo.email}
@@ -48,14 +48,14 @@ export function Footer() {
                 href={personalInfo.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={clsx(styles.linkText, "flex items-center gap-2 linkText")}
+                className="flex items-center gap-2 linkText"
               >
                 <Linkedin className="h-4 w-4" />
                 LinkedIn
               </a>
               <a
                 href={`tel:${personalInfo.phone}`}
-                className={"flex items-center gap-2 linkText"}
+                className="flex items-center gap-2 linkText"
               >
                 <Phone className="h-4 w-4" />
                 {personalInfo.phone}
