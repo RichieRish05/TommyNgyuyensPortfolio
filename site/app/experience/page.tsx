@@ -38,7 +38,7 @@ export default function ExperiencePage() {
       </div>
       <Navigation />
 
-      <main className="relative z-10 pt-24 pb-16">
+      <main className="relative z-10 pt-15 pb-16">
         {/* Header */}
         <section className="max-w-6xl mx-auto px-6 py-12">
           <div className="max-w-2xl">

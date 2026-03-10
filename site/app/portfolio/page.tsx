@@ -57,7 +57,7 @@ export default function PortfolioPage() {
 
       
 
-      <main className="relative z-10 pt-24 pb-16">
+      <main className="relative z-10 pt-15 pb-16">
         {/* Header */}
         <section className="max-w-6xl mx-auto px-6 py-12">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
@@ -268,7 +268,7 @@ function ProjectSection({
 // Project List Item Component
 function ProjectListItem({ project }: { project: Project }) {
   return (
-    <div className="group flex items-center gap-6 p-4 rounded-lg border border-border bg-card hover:border-foreground/20 transition-colors">
+    <div className="radialBackground group flex items-center gap-6 p-4 rounded-lg border border-border bg-card hover:border-foreground/20 transition-colors">
       <div className="relative w-24 h-16 rounded-md overflow-hidden bg-muted shrink-0">
         <Image
           src={backgroundImage}

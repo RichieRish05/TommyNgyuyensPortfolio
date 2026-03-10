@@ -38,7 +38,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
   return (
     <div
       className={cn(
-        "group relativ border-border rounded-lg overflow-hidden transition-all duration-300 hover:border-foreground/20 hover:shadow-lg",
+        "group relative border-border rounded-lg overflow-hidden transition-all duration-300 hover:border-foreground/20 hover:shadow-lg",
         className
       )}
     >

@@ -1,19 +1,20 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowRight, Loader2 } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
-import { personalInfo, projects } from "@/lib/data"
+import { projects, type Project } from "@/lib/data"
 import { ProjectCard } from "@/components/project-card"
+import { ProjectModal } from "@/components/project-modal"
 import styles from "./homepage.module.scss"
-import { useRef, useState, useEffect } from "react"
-import clsx from "clsx"
+import { useState } from "react"
 
 
 export default function HomePage() {
   const featuredProjects = projects.filter((p) => p.featured).slice(0, 4)
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 
   return (
     <div className={styles.container}>
@@ -29,7 +30,7 @@ export default function HomePage() {
             className={styles.backgroundVideo} 
           />
       {/* Hero Section */}
-      <section className="min-h-screen flex flex-col justify-center items-center pt-16">
+      <section className="min-h-screen flex flex-col justify-center items-center pt-15">
           <div 
             className={styles.title}
             onClick={() => {
@@ -59,7 +60,13 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {featuredProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
+              <button
+                key={project.id}
+                onClick={() => setSelectedProject(project)}
+                className="text-left w-full"
+              >
+                <ProjectCard project={project} />
+              </button>
             ))}
           </div>
         </div>
@@ -68,6 +75,10 @@ export default function HomePage() {
 
       <Footer />
 
+      <ProjectModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </div>
   )
 

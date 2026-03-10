@@ -1,15 +1,10 @@
 "use client"
 
 import * as React from "react"
-import Link from "next/link"
 import {
-  Mail,
-  Phone,
-  Linkedin,
-  MapPin,
-  FileText,
   Send,
   CheckCircle2,
+  AlertCircle,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -17,28 +12,68 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
-import { personalInfo } from "@/lib/data"
 
 export default function ContactPage() {
   const [isSubmitted, setIsSubmitted] = React.useState(false)
   const [isSubmitting, setIsSubmitting] = React.useState(false)
+  const [isError, setIsError] = React.useState(false)
+  const [isFormValid, setIsFormValid] = React.useState(false)
+
+  const validateForm = (form: HTMLFormElement) => {
+    const formData = new FormData(form)
+    const firstName = (formData.get("firstName") as string)?.trim()
+    const lastName = (formData.get("lastName") as string)?.trim()
+    const email = (formData.get("email") as string)?.trim()
+    const subject = (formData.get("subject") as string)?.trim()
+    const message = (formData.get("message") as string)?.trim()
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+    setIsFormValid(
+      !!firstName && !!lastName && !!email && emailRegex.test(email) && !!subject && !!message
+    )
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setIsError(false)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    const form = e.currentTarget
+    const formData = new FormData(form)
+    const data = {
+      firstName: formData.get("firstName"),
+      lastName: formData.get("lastName"),
+      email: formData.get("email"),
+      organization: formData.get("organization"),
+      subject: formData.get("subject"),
+      message: formData.get("message"),
+    }
 
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+
+      if (!response.ok) {
+        throw new Error("Failed to send message")
+      }
+
+      form.reset()
+      setIsSubmitted(true)
+    } catch {
+      setIsError(true)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background playfair">
       <Navigation />
 
-      <main className="pt-24 pb-16">
+      <main className="pt-15 pb-16">
         {/* Header */}
         <section className="max-w-6xl mx-auto px-6 py-12">
           <div className="max-w-2xl">
@@ -56,12 +91,28 @@ export default function ContactPage() {
           </div>
         </section>
 
-        {/* Contact Content */}
+        {/* Contact Form */}
         <section className="max-w-6xl mx-auto px-6 py-8">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
-            {/* Contact Form */}
-            <div className="lg:col-span-3">
-              {isSubmitted ? (
+              {isError ? (
+                <div className="p-8 rounded-lg border border-destructive/50 bg-card text-center">
+                  <div className="w-16 h-16 rounded-full bg-destructive/10 flex items-center justify-center mx-auto mb-6">
+                    <AlertCircle className="h-8 w-8 text-destructive" />
+                  </div>
+                  <h2 className="text-xl font-medium mb-2">
+                    Failed to Send Message
+                  </h2>
+                  <p className="text-muted-foreground mb-6">
+                    Something went wrong. Please try again or reach out
+                    directly via email.
+                  </p>
+                  <Button
+                    variant="outline"
+                    onClick={() => setIsError(false)}
+                  >
+                    Try Again
+                  </Button>
+                </div>
+              ) : isSubmitted ? (
                 <div className="p-8 rounded-lg border border-border bg-card text-center">
                   <div className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center mx-auto mb-6">
                     <CheckCircle2 className="h-8 w-8" />
@@ -81,7 +132,7 @@ export default function ContactPage() {
                   </Button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} onChange={(e) => validateForm(e.currentTarget)} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="firstName">First Name</Label>
@@ -148,7 +199,7 @@ export default function ContactPage() {
                     type="submit"
                     size="lg"
                     className="w-full sm:w-auto"
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || !isFormValid}
                   >
                     {isSubmitting ? (
                       "Sending..."
@@ -161,95 +212,6 @@ export default function ContactPage() {
                   </Button>
                 </form>
               )}
-            </div>
-
-            {/* Contact Info */}
-            <div className="lg:col-span-2 space-y-8">
-              {/* Direct Contact */}
-              <div className="p-6 rounded-lg border border-border bg-card">
-                <h2 className="font-medium mb-6">Direct Contact</h2>
-                <div className="space-y-4">
-                  <a
-                    href={`mailto:${personalInfo.email}`}
-                    className="flex items-center gap-4 text-muted-foreground hover:text-foreground transition-colors group"
-                  >
-                    <div className="w-10 h-10 rounded-md bg-secondary flex items-center justify-center group-hover:bg-secondary/80 transition-colors">
-                      <Mail className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Email</p>
-                      <p className="text-foreground">{personalInfo.email}</p>
-                    </div>
-                  </a>
-
-                  <a
-                    href={`tel:${personalInfo.phone}`}
-                    className="flex items-center gap-4 text-muted-foreground hover:text-foreground transition-colors group"
-                  >
-                    <div className="w-10 h-10 rounded-md bg-secondary flex items-center justify-center group-hover:bg-secondary/80 transition-colors">
-                      <Phone className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Phone</p>
-                      <p className="text-foreground">{personalInfo.phone}</p>
-                    </div>
-                  </a>
-
-                  <a
-                    href={personalInfo.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-4 text-muted-foreground hover:text-foreground transition-colors group"
-                  >
-                    <div className="w-10 h-10 rounded-md bg-secondary flex items-center justify-center group-hover:bg-secondary/80 transition-colors">
-                      <Linkedin className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">LinkedIn</p>
-                      <p className="text-foreground">Connect with me</p>
-                    </div>
-                  </a>
-
-                  <div className="flex items-center gap-4 text-muted-foreground">
-                    <div className="w-10 h-10 rounded-md bg-secondary flex items-center justify-center">
-                      <MapPin className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Location</p>
-                      <p className="text-foreground">{personalInfo.location}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Resume Download */}
-              <div className="p-6 rounded-lg border border-border bg-card">
-                <h2 className="font-medium mb-4">Resume</h2>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Download my resume for a comprehensive overview of my
-                  experience, skills, and accomplishments.
-                </p>
-                <Button asChild variant="outline" className="w-full bg-transparent">
-                  <Link href={personalInfo.resumeUrl} target="_blank">
-                    <FileText className="mr-2 h-4 w-4" />
-                    Download Resume
-                  </Link>
-                </Button>
-              </div>
-
-              {/* Availability */}
-              <div className="p-6 rounded-lg border border-border bg-secondary/30">
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                  <h2 className="font-medium">Currently Available</h2>
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  I&apos;m open to new opportunities and freelance projects.
-                  Response time is typically within 24-48 hours.
-                </p>
-              </div>
-            </div>
-          </div>
         </section>
       </main>
 
