@@ -25,7 +25,7 @@ export default function AboutPage() {
         <Image src={backgroundImage} alt="About Page Background Image" fill className={styles.backgroundImage} />
       </div>
       <Navigation />
-      <main className="relative z-10 pt-15 pb-16">
+      <main className="relative z-10 pt-8 sm:pt-15 pb-16">
         {/* Hero Section */}
         <section className="max-w-6xl mx-auto px-6 py-12">
           <div className={styles.heroWrapper}>

@@ -57,7 +57,7 @@ export default function PortfolioPage() {
 
       
 
-      <main className="relative z-10 pt-15 pb-16">
+      <main className="relative z-10 pt-8 sm:pt-15 pb-16">
         {/* Header */}
         <section className="max-w-6xl mx-auto px-6 py-12">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">

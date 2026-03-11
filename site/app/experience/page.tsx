@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import Link from "next/link"
 import { ArrowRight, Briefcase, Filter } from "lucide-react"
 import { motion } from "framer-motion"
@@ -38,7 +37,7 @@ export default function ExperiencePage() {
       </div>
       <Navigation />
 
-      <main className="relative z-10 pt-15 pb-16">
+      <main className="relative z-10 pt-8 sm:pt-15 pb-16">
         {/* Header */}
         <section className="max-w-6xl mx-auto px-6 py-12">
           <div className="max-w-2xl">
@@ -49,9 +48,7 @@ export default function ExperiencePage() {
               Professional Experience
             </h1>
             <p className="text-sm md:text-lg text-foreground leading-relaxed">
-              A timeline of my professional journey across marketing, design,
-              and media production. Each role has shaped my approach to creative
-              problem-solving.
+              A timeline of my professional journey so far.
             </p>
           </div>
         </section>

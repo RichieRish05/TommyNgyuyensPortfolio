@@ -12,6 +12,10 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
+import Image from "next/image"
+
+import backgroundImage from "@/assets/contactBackgroundImage.webp"
+import styles from "./contact.module.scss"
 
 export default function ContactPage() {
   const [isSubmitted, setIsSubmitted] = React.useState(false)
@@ -73,26 +77,30 @@ export default function ContactPage() {
     <div className="min-h-screen bg-background playfair">
       <Navigation />
 
-      <main className="pt-15 pb-16">
+      <div className={styles.backgroundWrapper} aria-hidden="true">
+        <Image src={backgroundImage} alt="Experiences Page Background Image" fill className={styles.backgroundImage} />
+      </div>
+
+      <main className="relative z-10 pt-8 sm:pt-15 pb-16">
         {/* Header */}
         <section className="max-w-6xl mx-auto px-6 py-12">
           <div className="max-w-2xl">
-            <p className="text-sm text-muted-foreground mb-3 tracking-wide uppercase">
+            <p className="text-sm text-foreground mb-3 tracking-wide uppercase">
               Contact
             </p>
             <h1 className="text-3xl sm:text-4xl font-medium tracking-tight mb-4">
               Let&apos;s Connect
             </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-lg text-foreground leading-relaxed">
               Have a project in mind or just want to say hello? I&apos;d love to
-              hear from you. Fill out the form below or reach out directly
-              through any of the channels listed.
+              hear from you.
             </p>
           </div>
         </section>
 
         {/* Contact Form */}
         <section className="max-w-6xl mx-auto px-6 py-8">
+          <div className="rounded-xl border border-border radialBackground backdrop-blur-sm p-8 sm:p-10">
               {isError ? (
                 <div className="p-8 rounded-lg border border-destructive/50 bg-card text-center">
                   <div className="w-16 h-16 rounded-full bg-destructive/10 flex items-center justify-center mx-auto mb-6">
@@ -139,8 +147,9 @@ export default function ContactPage() {
                       <Input
                         id="firstName"
                         name="firstName"
-                        placeholder="John"
+                        placeholder="Jane"
                         required
+                        className="bg-black border-neutral-700"
                       />
                     </div>
                     <div className="space-y-2">
@@ -150,6 +159,7 @@ export default function ContactPage() {
                         name="lastName"
                         placeholder="Doe"
                         required
+                        className="bg-black border-neutral-700"
                       />
                     </div>
                   </div>
@@ -162,6 +172,7 @@ export default function ContactPage() {
                       type="email"
                       placeholder="john@example.com"
                       required
+                      className="bg-black border-neutral-700"
                     />
                   </div>
 
@@ -171,6 +182,7 @@ export default function ContactPage() {
                       id="organization"
                       name="organization"
                       placeholder="Company or Organization"
+                      className="bg-black border-neutral-700"
                     />
                   </div>
 
@@ -181,6 +193,7 @@ export default function ContactPage() {
                       name="subject"
                       placeholder="Project Inquiry"
                       required
+                      className="bg-black border-neutral-700"
                     />
                   </div>
 
@@ -212,6 +225,7 @@ export default function ContactPage() {
                   </Button>
                 </form>
               )}
+          </div>
         </section>
       </main>
 
