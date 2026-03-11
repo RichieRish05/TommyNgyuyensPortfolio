@@ -12,7 +12,6 @@ import { cn } from "@/lib/utils"
 import { useState, useEffect } from "react"
 
 import styles from "./experiences.module.scss"
-import backgroundImage from "@/assets/experiencesBackgroundImage.jpg"
 import Image from "next/image"
 
 
@@ -33,7 +32,12 @@ export default function ExperiencePage() {
   return (
     <div className="min-h-screen bg-background playfair">
       <div className={styles.backgroundWrapper} aria-hidden="true">
-        <Image src={backgroundImage} alt="Experiences Page Background Image" fill className={styles.backgroundImage} />
+        <Image 
+          src="https://d395js6c4h8h6h.cloudfront.net/Images/experiencesBackgroundImage.jpg"
+          alt="Experiences Page Background Image" 
+          fill 
+          className={styles.backgroundImage} 
+        />
       </div>
       <Navigation />
 

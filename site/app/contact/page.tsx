@@ -14,7 +14,6 @@ import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import Image from "next/image"
 
-import backgroundImage from "@/assets/contactBackgroundImage.webp"
 import styles from "./contact.module.scss"
 
 export default function ContactPage() {
@@ -78,7 +77,12 @@ export default function ContactPage() {
       <Navigation />
 
       <div className={styles.backgroundWrapper} aria-hidden="true">
-        <Image src={backgroundImage} alt="Experiences Page Background Image" fill className={styles.backgroundImage} />
+        <Image 
+          src="https://d395js6c4h8h6h.cloudfront.net/Images/contactBackgroundImage.webp" 
+          alt="Experiences Page Background Image" 
+          fill 
+          className={styles.backgroundImage} 
+        />
       </div>
 
       <main className="relative z-10 pt-8 sm:pt-15 pb-16">

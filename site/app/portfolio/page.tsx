@@ -13,7 +13,6 @@ import { cn } from "@/lib/utils"
 
 import Image from "next/image"
 import styles from "./portfolio.module.scss"
-import backgroundImage from "@/assets/portfolioBackgroundImage.png"
 
 const categories: { value: ProjectCategory; label: string }[] = [
   { value: "all", label: "All Projects" },
@@ -52,7 +51,12 @@ export default function PortfolioPage() {
     <div className="min-h-screen bg-background playfair">
       <Navigation />
       <div className={styles.backgroundWrapper} aria-hidden="true">
-        <Image src={backgroundImage} alt="About Page Background Image" fill className={styles.backgroundImage} />
+        <Image 
+          src="https://d395js6c4h8h6h.cloudfront.net/Images/portfolioBackgroundImage.png"
+          alt="About Page Background Image" 
+          fill 
+          className={styles.backgroundImage} 
+        />
       </div>
 
       
