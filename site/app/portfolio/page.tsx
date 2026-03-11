@@ -275,7 +275,7 @@ function ProjectListItem({ project }: { project: Project }) {
     <div className="radialBackground group flex items-center gap-6 p-4 rounded-lg border border-border bg-card hover:border-foreground/20 transition-colors">
       <div className="relative w-24 h-16 rounded-md overflow-hidden bg-muted shrink-0">
         <Image
-          src={backgroundImage}
+          src="@/assets/aboutBackgroundImage.jpg"
           alt={project.title}
           className="w-full h-full object-cover"
         />
