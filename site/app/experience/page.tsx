@@ -129,33 +129,7 @@ export default function ExperiencePage() {
           </div>
         </section>
 
-        {/* Resume CTA */}
-        <section className="max-w-6xl mx-auto px-6 py-16 mt-8 border-t border-border">
-          <div className="radialBackground rounded-lg p-8 sm:p-12 flex flex-col sm:flex-row items-center justify-between gap-6">
-            <div>
-              <h2 className="text-xl font-medium mb-2">
-                Want the full picture?
-              </h2>
-              <p className="text-foreground">
-                Download my resume for a comprehensive overview of my experience
-                and skills.
-              </p>
-            </div>
-            <div className="flex gap-4">
-              <Button asChild >
-                <Link href="/resume.pdf" target="_blank">
-                  Download Resume
-                </Link>
-              </Button>
-              <Button asChild className="group">
-                <Link href="/contact">
-                  Get in Touch
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </section>
+
       </main>
 
       <Footer />
